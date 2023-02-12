@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
 a {
   color: #0366d6;
 }
@@ -28,7 +31,7 @@ code {
   padding:20px 20px;
 }
 .config-container {
-  direction:rtl;
+  /*direction:rtl;*/
   /*background-color: red;*/
   height: 100%;
   padding: 20px 20px;
@@ -44,4 +47,31 @@ code {
 .write-page{
     height:100%;
     background-color:white;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+#name{
+    font-size:30px;
+    margin-left:20px;
+    margin-top:20px;
+    margin-bottom: 0px;
+    display:inline-block
+}
+
+.example-form-field{
+    margin-left:20px;
+}
+#email {
+  margin-left: 20px;
+  margin-top:0px;
+}
+
+#icon {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  text-align: center;
 }
