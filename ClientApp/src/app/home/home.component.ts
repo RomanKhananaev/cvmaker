@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -16,15 +16,27 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 export class HomeComponent {
-  userInfo = {
-    fName: 'Elad',
-    lName: 'Mor'
+  form!: FormGroup;
+
+  matcher = new MyErrorStateMatcher();  
+
+  constructor(private fb: FormBuilder) {
+
   }
-  emailFormControl = new FormControl('Elad@gmail.com', [Validators.required, Validators.email]);
-  matcher = new MyErrorStateMatcher();
 
   ngOnInit() {
-    console.log("Obj:", this.emailFormControl);
+    this.form = this.fb.group({
+      name: ["Elad Mor", [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(5)]],
+      mail: ["eladmor@gmail.com", [Validators.required, Validators.email]]
+    });
+  }
+
+  save(form: any) {
+    console.log("Form: ", form);
+  }
+
+  clear(conrolName: any) {
+    this.form.reset(conrolName);
   }
 
 }

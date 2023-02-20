@@ -3,7 +3,46 @@
   <div class="col-6">
     <div class="config-container">
       <div class="write-page">
-        <mat-form-field class="example-form-field">
+
+        <form [formGroup]="form" (ngSubmit)="save(form)">
+          <mat-form-field class="example-form-field">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="name" [errorStateMatcher]="matcher">
+            <button *ngIf="form.controls.name.value != ''
+                    " matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clear('name')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('minlength')">
+              Plaese enter more than 4 alphabetic characters
+            </mat-error>
+            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('pattern')">
+              Plaese enter only alphabetic characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="mail" [errorStateMatcher]="matcher">
+            <button *ngIf="form.controls.mail.value != ''
+                    " matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clear('mail')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('minlength')">
+              Plaese enter more than 4 alphabetic characters
+            </mat-error>
+            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('pattern')">
+              Plaese enter only alphabetic characters
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit">
+            Submit
+          </button>
+        </form>
+
+        <!--<mat-form-field class="example-form-field">
           <mat-label>First Name</mat-label>
           <input matInput type="text" [(ngModel)]="userInfo.fName">
           <button *ngIf="userInfo.fName" matSuffix mat-icon-button aria-label="Clear" (click)="userInfo.fName=''">
@@ -23,28 +62,44 @@
             <mat-label>Email</mat-label>
             <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                    placeholder="Ex. pat@example.com">
-            <mat-hint>Errors appear instantly!</mat-hint>
+
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
               Please enter a valid email address
             </mat-error>
             <mat-error *ngIf="emailFormControl.hasError('required')">
               Email is <strong>required</strong>
             </mat-error>
+            <button *ngIf="emailFormControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="emailFormControl.value=''">
+              <mat-icon>close</mat-icon>
+            </button>
           </mat-form-field>
-          </form>
+        </form>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>Phone Number</mat-label>
+          <input matInput type="text" [(ngModel)]="userInfo.pNumber">
+          <button *ngIf="userInfo.pNumber" matSuffix mat-icon-button aria-label="Clear" (click)="userInfo.pNumber=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>-->
       </div>
 
     </div>
   </div>
+
   <div class="col-6">
     <div class="preview-container">
-      <div class="cv-page">
+      <!--<div class="cv-page">
         <p id="name">{{userInfo.fName}} {{userInfo.lName}}</p>
         <p id="email">
           <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">email</mat-icon>
           {{emailFormControl.value}}
         </p>
-      </div>
+        <p id="phone_number">
+          <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">phone</mat-icon>
+          {{userInfo.pNumber}}
+        </p>
+      </div>-->
     </div>
   </div>
 
