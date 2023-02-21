@@ -7,16 +7,32 @@
         <form [formGroup]="form" (ngSubmit)="save(form)">
           <mat-form-field class="example-form-field">
             <mat-label>First Name</mat-label>
-            <input matInput type="text" formControlName="name" [errorStateMatcher]="matcher">
-            <button *ngIf="form.controls.name.value != ''
+            <input matInput type="text" formControlName="fName" [errorStateMatcher]="matcher">
+            <button *ngIf="form.controls.fName.value != ''
                     " matSuffix mat-icon-button aria-label="Clear"
-                    (click)="clear('name')">
+                    (click)="clear('fName')">
               <mat-icon>close</mat-icon>
             </button>
-            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('minlength')">
-              Plaese enter more than 4 alphabetic characters
+            <mat-error *ngIf="form.controls.fName.errors?.hasOwnProperty('minlength')">
+              Plaese enter more than 2 alphabetic characters
             </mat-error>
-            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('pattern')">
+            <mat-error *ngIf="form.controls.fName.errors?.hasOwnProperty('pattern')">
+              Plaese enter only alphabetic characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lName" [errorStateMatcher]="matcher">
+            <button *ngIf="form.controls.lName.value != ''
+                    " matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clear('lName')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="form.controls.lName.errors?.hasOwnProperty('minlength')">
+              Plaese enter more than 2 alphabetic characters
+            </mat-error>
+            <mat-error *ngIf="form.controls.lName.errors?.hasOwnProperty('pattern')">
               Plaese enter only alphabetic characters
             </mat-error>
           </mat-form-field>
@@ -29,15 +45,31 @@
                     (click)="clear('mail')">
               <mat-icon>close</mat-icon>
             </button>
-            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('minlength')">
+            <mat-error *ngIf="form.status == 'INVALID'">
+              Plaese enter a valid mail
+            </mat-error>
+
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field">
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="text" formControlName="phoneNumber" [errorStateMatcher]="matcher">
+            <button *ngIf="form.controls.phoneNumber.value != ''
+                    " matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clear('phoneNumber')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="form.controls.phoneNumber.errors?.hasOwnProperty('minlength')">
               Plaese enter more than 4 alphabetic characters
             </mat-error>
-            <mat-error *ngIf="form.controls.name.errors?.hasOwnProperty('pattern')">
+            <mat-error *ngIf="form.controls.phoneNumber.errors?.hasOwnProperty('pattern')">
               Plaese enter only alphabetic characters
             </mat-error>
           </mat-form-field>
 
-          <button mat-raised-button type="submit">
+
+          <br />
+          <button id="submitButton" mat-raised-button type="submit">
             Submit
           </button>
         </form>

@@ -64,9 +64,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .example-form-field{
     margin-left:20px;
 }
+
+#submitButton {
+  margin-left: 20px;
+}
+
 #email {
   margin-left: 20px;
-  margin-top:0px;
+  margin-top: 0px;
 }
 
 #icon {
@@ -74,4 +79,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 15px;
   font-size: 15px;
   text-align: center;
+}
+
+.mat-form-field-infix {
+  padding: 0.5em 0;
+  border-top: 1.85em solid transparent;
 }

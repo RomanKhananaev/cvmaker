@@ -14,11 +14,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './home.component.html',
 })
 
-
 export class HomeComponent {
   form!: FormGroup;
 
-  matcher = new MyErrorStateMatcher();  
+  matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder) {
 
@@ -26,8 +25,11 @@ export class HomeComponent {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ["Elad Mor", [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(5)]],
-      mail: ["eladmor@gmail.com", [Validators.required, Validators.email]]
+      fName: ["Elad", [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(2)]],
+      lName: ["Mor", [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(2)]],
+      mail: ["eladmor@gmail.com", [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      phoneNumber: ["0548138620", [Validators.required, Validators.pattern('[0123456789]*'),
+      Validators.minLength(10)]]
     });
   }
 
@@ -35,8 +37,10 @@ export class HomeComponent {
     console.log("Form: ", form);
   }
 
-  clear(conrolName: any) {
-    this.form.reset(conrolName);
+  clear(controlName: any) {
+    console.log("Control Name: ", controlName);
+    this.form.patchValue({
+      [controlName]: ""
+    });
   }
-
 }
