@@ -29,7 +29,8 @@ export class HomeComponent {
       lName: ["Mor", [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(2)]],
       mail: ["eladmor@gmail.com", [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       phoneNumber: ["0548138620", [Validators.required, Validators.pattern('[0123456789]*'),
-      Validators.minLength(10)]]
+        Validators.minLength(10)]],
+      linkedIn: "linkedIn"
     });
   }
 

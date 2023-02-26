@@ -74,6 +74,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: 0px;
 }
 
+#phone_number {
+  margin-left: 20px;
+  margin-top: 0px;
+}
+
+#LinkedIn {
+  margin-left: 20px;
+  margin-top: 0px;
+}
+
 #icon {
   width: 15px;
   height: 15px;
