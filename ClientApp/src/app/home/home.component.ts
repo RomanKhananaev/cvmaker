@@ -50,7 +50,7 @@ export class HomeComponent {
       console.log("Test Failed: ", err);
     })
 
-    this.userApi.Test2(this.form.value.age.toString()).subscribe(res => {
+    this.userApi.Test2(this.form.value.age, this.form.value.fName).subscribe(res => {
       console.log("Result2: ", res);
     }, err => {
       console.log("Test Failed: ", err);

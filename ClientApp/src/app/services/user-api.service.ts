@@ -11,8 +11,11 @@ export class UserApiService {
     return this.http.get('/api/user/Test', {responseType: "text"});
   }
 
-  Test2(date: any) {
-    console.log("Date send: ", date);
-    return this.http.post<any>(`/api/user/Test2/${date}`, {});
+  Test2(dateOfBirth: any, userName: any) {
+    let obj = {
+      date: dateOfBirth,
+      name: userName
+    }
+    return this.http.post<any>(`/api/user/Test2`, obj);
   }
 }

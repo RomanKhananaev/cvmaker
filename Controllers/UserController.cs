@@ -14,10 +14,18 @@ namespace cvmaker.Controllers
             return "Hi Roman !";
         }
 
-        [HttpPost("Test2/{date}")]
-        public async Task<ActionResult> Test2(DateTime date)
+        [HttpPost("Test2")]
+        public async Task<ActionResult> Test2(dateObj dateObj)
         {
-            return Ok(date);
+            return Ok(dateObj.date);
         }
+
+        public struct dateObj
+        {
+            public DateTime date { set; get; }
+
+            public string name { set; get; }
+        }
+            
     }
 }
