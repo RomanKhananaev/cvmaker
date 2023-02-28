@@ -78,9 +78,9 @@
           </mat-form-field>
           <br />
 
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Choose youre birth date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="age">
+          <mat-form-field class="example-form-field">
+            <mat-label>Choose your BirthDay</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="age" (dateChange)="calculateAge($event)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker></mat-datepicker>            
           </mat-form-field>

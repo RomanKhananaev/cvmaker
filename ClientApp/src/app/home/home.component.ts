@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher, MatNativeDateModule } from '@angular/material/core';
+import { ErrorStateMatcher, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
@@ -14,16 +15,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  providers: [{provide:MAT_DATE_LOCALE, useValue: 'en-GB'}]
 })
 
 export class HomeComponent {
   form!: FormGroup;
 
   matcher = new MyErrorStateMatcher();
-  public birthdate!: Date;
-  public age!: number;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
 
   }
 
@@ -36,12 +36,23 @@ export class HomeComponent {
       phoneNumber: ["0548138620", [Validators.required, Validators.pattern('[0123456789]*'),
       Validators.minLength(10)]],
       linkedIn: "linkedIn",
-      age: "Choose your birth date"
+      age: "Choose Your BirthDay"
     });
   }
 
+
   save(form: any) {
-    console.log("Form: ", form);
+    //  console.log("Form: ", form);
+    this.http.get<any>('/api/user/Test').subscribe(res => {
+      console.log("Result: ", res);
+    }, err => {
+      console.log("Test Failed");
+    })
+
+  }
+
+  calculateAge(value: any) {
+    console.log(value);
   }
 
   clear(controlName: any) {
