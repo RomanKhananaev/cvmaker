@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { UserApiService } from '../services/user-api.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,7 +24,7 @@ export class HomeComponent {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private userApi: UserApiService) {
 
   }
 
@@ -43,10 +44,16 @@ export class HomeComponent {
 
   save(form: any) {
     //  console.log("Form: ", form);
-    this.http.get<any>('/api/user/Test').subscribe(res => {
+    this.userApi.Test().subscribe(res => {
       console.log("Result: ", res);
     }, err => {
-      console.log("Test Failed");
+      console.log("Test Failed: ", err);
+    })
+
+    this.userApi.Test2().subscribe(res => {
+      console.log("Result2: ", res);
+    }, err => {
+      console.log("Test Failed: ", err);
     })
 
   }
