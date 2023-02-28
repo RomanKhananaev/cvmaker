@@ -14,10 +14,10 @@ namespace cvmaker.Controllers
             return "Hi Roman !";
         }
 
-        [HttpGet("Test2")]
-        public async Task<ActionResult> Test2()
+        [HttpPost("Test2/{date}")]
+        public async Task<ActionResult> Test2(DateTime date)
         {
-            return Ok(3);
+            return Ok(date);
         }
     }
 }
