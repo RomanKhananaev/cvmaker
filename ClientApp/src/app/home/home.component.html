@@ -5,6 +5,7 @@
       <div class="write-page">
 
         <form [formGroup]="form" (ngSubmit)="save(form)">
+
           <mat-form-field class="example-form-field">
             <mat-label>First Name</mat-label>
             <input matInput type="text" formControlName="fName" [errorStateMatcher]="matcher">
@@ -75,6 +76,14 @@
               Plaese enter numbers only
             </mat-error>
           </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose youre birth date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="age">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>            
+          </mat-form-field>
 
           <br />
 
@@ -95,12 +104,15 @@
           {{form.controls.mail.value}}
         </p>
         <p id="LinkedIn">
-          <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">linkedIn</mat-icon>
+          <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">link</mat-icon>
           {{form.controls.linkedIn.value}}
         </p>
         <p id="phone_number">
           <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">phone</mat-icon>
           {{form.controls.phoneNumber.value}}
+        </p>
+        <p id="age">
+          {{form.controls.age.value}}
         </p>
       </div>
     </div>
