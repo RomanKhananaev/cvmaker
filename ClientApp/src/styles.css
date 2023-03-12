@@ -48,6 +48,11 @@ code {
   box-shadow: 0px 2px 10px black;
 }
 
+.icons {
+  display: flex;
+  align-items: center;
+}
+
 .write-page {
   height: 100%;
   background-color: white;
@@ -89,6 +94,11 @@ body {
 }
 
 #phone_number {
+  margin-left: 20px;
+  margin-top: 0px;
+}
+
+#age {
   margin-left: 20px;
   margin-top: 0px;
 }

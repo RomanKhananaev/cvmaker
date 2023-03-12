@@ -14,17 +14,23 @@ namespace cvmaker.Controllers
             return "Hi Roman !";
         }
 
-        [HttpPost("Test2")]
-        public async Task<ActionResult> Test2(dateObj dateObj)
+        [HttpPost("GetAge")]
+        public async Task<ActionResult> GetAge(DateObj dateObj)
         {
-            return Ok(dateObj.date);
+            dateObj.date = dateObj.date.AddHours(2);
+            var today = DateTime.Today;
+
+            // Calculate the age.
+            var age = today.Year - dateObj.date.Year;
+
+            // Go back to the year in which the person was born in case of a leap year
+            if (dateObj.date.Date > today.AddYears(-age)) age--;
+            return Ok(age);
         }
 
-        public struct dateObj
+        public struct DateObj
         {
             public DateTime date { set; get; }
-
-            public string name { set; get; }
         }
             
     }

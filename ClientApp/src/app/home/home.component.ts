@@ -21,6 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class HomeComponent {
   form!: FormGroup;
+  calculate_age = 0;
 
   matcher = new MyErrorStateMatcher();
 
@@ -49,17 +50,14 @@ export class HomeComponent {
     }, err => {
       console.log("Test Failed: ", err);
     })
-
-    this.userApi.Test2(this.form.value.age, this.form.value.fName).subscribe(res => {
-      console.log("Result2: ", res);
-    }, err => {
-      console.log("Test Failed: ", err);
-    })
-
   }
 
   calculateAge(value: any) {
-    console.log(value);
+    this.userApi.GetAge(value.value).subscribe(res => {
+    this.calculate_age = res;
+    }, err => {
+      console.log("Failed to calculate age: ");
+    })
   }
 
   clear(controlName: any) {

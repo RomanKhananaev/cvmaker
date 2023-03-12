@@ -76,7 +76,6 @@
               Plaese enter numbers only
             </mat-error>
           </mat-form-field>
-          <br />
 
           <mat-form-field class="example-form-field">
             <mat-label>Choose your BirthDay</mat-label>
@@ -86,6 +85,7 @@
           </mat-form-field>
 
           <br />
+          <!--comment-->
 
           <button id="submitButton" mat-raised-button type="submit">
             Submit
@@ -99,21 +99,23 @@
     <div class="preview-container">
       <div class="cv-page">
         <p id="name">{{form.controls.fName.value}} {{form.controls.lName.value}}</p>
-        <p id="email">
-          <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">email</mat-icon>
-          {{form.controls.mail.value}}
-        </p>
-        <p id="LinkedIn">
-          <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">link</mat-icon>
-          {{form.controls.linkedIn.value}}
-        </p>
-        <p id="phone_number">
-          <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">phone</mat-icon>
-          {{form.controls.phoneNumber.value}}
-        </p>
-        <p id="age">
-          {{form.controls.age.value}}
-        </p>
+        <div class="icons">
+          <p id="email">
+            <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">email</mat-icon>
+            {{form.controls.mail.value}}
+          </p>
+          <p id="LinkedIn">
+            <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">link</mat-icon>
+            {{form.controls.linkedIn.value}}
+          </p>
+          <p id="phone_number">
+            <mat-icon id="icon" aria-hidden="false" aria-label="Example home icon">phone</mat-icon>
+            {{form.controls.phoneNumber.value}}
+          </p>
+          <p id="age" *ngIf="calculate_age != 0">
+            Age: {{calculate_age}}
+          </p>
+        </div>
       </div>
     </div>
   </div>
